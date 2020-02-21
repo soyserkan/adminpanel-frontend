@@ -33,13 +33,7 @@ export class AuthComponent implements OnInit {
 		private splashScreenService: SplashScreenService) {
 	}
 
-	/**
-	 * @ Lifecycle sequences => https://angular.io/guide/lifecycle-hooks
-	 */
 
-	/**
-	 * On init
-	 */
 	ngOnInit(): void {
 		this.translationService.setLanguage(this.translationService.getSelectedLanguage());
 		this.headerLogo = this.layoutConfigService.getLogo();

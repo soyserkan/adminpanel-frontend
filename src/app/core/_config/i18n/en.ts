@@ -16,48 +16,48 @@ export const locale = {
 		},
 		AUTH: {
 			GENERAL: {
-				OR: 'Or',
-				SUBMIT_BUTTON: 'Submit',
-				NO_ACCOUNT: 'Don\'t have an account?',
-				SIGNUP_BUTTON: 'Sign Up',
-				FORGOT_BUTTON: 'Forgot Password',
-				BACK_BUTTON: 'Back',
-				PRIVACY: 'Privacy',
-				LEGAL: 'Legal',
-				CONTACT: 'Contact',
+				OR: 'ya da',
+				SUBMIT_BUTTON: 'Onayla',
+				NO_ACCOUNT: 'Henüz hesabın mı yok?',
+				SIGNUP_BUTTON: 'Üye Ol',
+				FORGOT_BUTTON: 'Şifremi Unuttum',
+				BACK_BUTTON: 'Geri',
+				PRIVACY: 'Gizlilik',
+				LEGAL: 'Yasal',
+				CONTACT: 'İletişim',
 			},
 			LOGIN: {
-				TITLE: 'Login Account',
-				BUTTON: 'Sign In',
+				TITLE: 'Giriş Hesabı',
+				BUTTON: 'Giriş Yap',
 			},
 			FORGOT: {
-				TITLE: 'Forgotten Password?',
-				DESC: 'Enter your email to reset your password',
-				SUCCESS: 'Your account has been successfully reset.'
+				TITLE: 'Şifreni mi unuttun?',
+				DESC: 'şifreni sıfırlamak için email adresini gir',
+				SUCCESS: 'Hesabın başarıyla sıfırlandı.'
 			},
 			REGISTER: {
-				TITLE: 'Sign Up',
-				DESC: 'Enter your details to create your account',
-				SUCCESS: 'Your account has been successfuly registered.'
+				TITLE: 'Üye Ol',
+				DESC: 'Hesap oluşturmak için bilgilerinizi giriniz.',
+				SUCCESS: 'Hesabın başarıyla oluşturuldu.'
 			},
 			INPUT: {
 				EMAIL: 'Email',
-				FULLNAME: 'Fullname',
-				PASSWORD: 'Password',
-				CONFIRM_PASSWORD: 'Confirm Password',
-				USERNAME: 'Username'
+				FULLNAME: 'Ad Soyad',
+				PASSWORD: 'Şifre',
+				CONFIRM_PASSWORD: 'Şifreni Onayla',
+				USERNAME: 'Kullanıcı Adı'
 			},
 			VALIDATION: {
-				INVALID: '{{name}} is not valid',
-				REQUIRED: '{{name}} is required',
-				MIN_LENGTH: '{{name}} minimum length is {{min}}',
-				AGREEMENT_REQUIRED: 'Accepting terms & conditions are required',
-				NOT_FOUND: 'The requested {{name}} is not found',
-				INVALID_LOGIN: 'The login detail is incorrect',
-				REQUIRED_FIELD: 'Required field',
-				MIN_LENGTH_FIELD: 'Minimum field length:',
-				MAX_LENGTH_FIELD: 'Maximum field length:',
-				INVALID_FIELD: 'Field is not valid',
+				INVALID: '{{name}} alanı geçersiz',
+				REQUIRED: '{{name}} alanı zorunlu',
+				MIN_LENGTH: '{{name}} alanı minimum {{min}} karakter uzunluğunda olmalıdır',
+				AGREEMENT_REQUIRED: 'Koşullar ve şartlar alanı zorunludur',
+				NOT_FOUND: '{{name}} alanı bulunamadı',
+				INVALID_LOGIN: 'Giriş bilgileri geçersizdir',
+				REQUIRED_FIELD: 'Zorunlu alan',
+				MIN_LENGTH_FIELD: 'Minimum karakter uzunluğu:',
+				MAX_LENGTH_FIELD: 'Maximum karakter uzunluğu:',
+				INVALID_FIELD: 'geçersiz alan',
 			}
 		},
 		ECOMMERCE: {

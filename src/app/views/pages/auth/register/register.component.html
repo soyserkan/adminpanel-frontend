@@ -11,8 +11,8 @@
 		<form class="kt-login__form kt-form" [formGroup]="registerForm" autocomplete="off">
 			<div class="form-group">
 				<mat-form-field>
-					<mat-label>Fullname</mat-label>
-					<input matInput type="text" placeholder="Fullname" formControlName="fullname"/>
+					<mat-label>Ad Soyad</mat-label>
+					<input matInput type="text" placeholder="Ad Soyad" formControlName="fullname"/>
 					<mat-error *ngIf="isControlHasError('fullname','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -44,8 +44,8 @@
 			</div>
 			<div class="form-group">
 				<mat-form-field>
-					<mat-label>Username</mat-label>
-					<input matInput type="text" placeholder="Username" formControlName="username"/>
+					<mat-label>Kullanıcı Adı</mat-label>
+					<input matInput type="text" placeholder="Kullanıcı Adı" formControlName="username"/>
 					<mat-error *ngIf="isControlHasError('username','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -92,7 +92,7 @@
 			</div>
 			<div class="form-group">
 				<mat-checkbox name="agree" formControlName="agree">
-					I agree the <a href="javascript:;">terms & conditions</a>
+					<a href="javascript:;">Koşullar ve Şartları </a> kabul ediyorum 
 				</mat-checkbox>
 			</div>
 
