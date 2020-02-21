@@ -1,0 +1,3 @@
+[submodule "backend/AngularNodejsPanel"]
+	path = backend/AngularNodejsPanel
+	url = https://github.com/soyserkan/AngularNodejsPanel.git
