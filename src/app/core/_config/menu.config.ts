@@ -388,12 +388,18 @@ export class MenuConfig {
 					bullet: 'dot',
 				},
 				{
+					title: 'Twilio',
+					root: true,
+					icon: 'flaticon2-expand',
+					page: '/twilio'
+				},
+				{
 					title: 'Layout Builder',
 					root: true,
 					icon: 'flaticon2-expand',
 					page: '/builder'
 				},
-				{section: 'Components'},
+				{ section: 'Components' },
 				{
 					title: 'Google Material',
 					root: true,
@@ -651,7 +657,7 @@ export class MenuConfig {
 						}
 					]
 				},
-				{section: 'Applications'},
+				{ section: 'Applications' },
 				{
 					title: 'eCommerce',
 					bullet: 'dot',
@@ -685,7 +691,7 @@ export class MenuConfig {
 						}
 					]
 				},
-				{section: 'Custom'},
+				{ section: 'Custom' },
 				{
 					title: 'Error Pages',
 					root: true,

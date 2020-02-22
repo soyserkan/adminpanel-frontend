@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseComponent } from './views/theme/base/base.component';
 import { ErrorPageComponent } from './views/theme/content/error-page/error-page.component';
 import { AuthGuard } from './views/pages/auth/auth.guard';
+import { TwilioComponent } from './views/pages/twilio/twilio.component';
 // Auth
 // import {AuthGuard} from './core/auth';
 
@@ -14,12 +15,15 @@ const routes: Routes = [
 	{
 		path: '',
 		component: BaseComponent,
-		canActivate: [],
+		canActivate: [AuthGuard],
 		children: [
 			{
 				path: 'dashboard',
 				loadChildren: () => import('./views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-				canActivate: [AuthGuard]
+			},
+			{
+				path: 'twilio',
+				component: TwilioComponent
 			},
 			{
 				path: 'mail',
@@ -37,10 +41,6 @@ const routes: Routes = [
 				path: 'material',
 				loadChildren: () => import('./views/pages/material/material.module').then(m => m.MaterialModule),
 			},
-			// {
-			// 	path: 'user-management',
-			// 	loadChildren: () => import('app/views/pages/user-management/user-management.module').then(m => m.UserManagementModule),
-			// },
 			{
 				path: 'wizard',
 				loadChildren: () => import('./views/pages/wizard/wizard.module').then(m => m.WizardModule),

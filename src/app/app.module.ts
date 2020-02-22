@@ -59,6 +59,7 @@ import * as scss from 'highlight.js/lib/languages/scss';
 import * as xml from 'highlight.js/lib/languages/xml';
 import * as json from 'highlight.js/lib/languages/json';
 import { AuthInterceptor } from './views/pages/auth/auth.interceptor';
+import { TwilioService } from './views/pages/twilio/twilio.service';
 
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -109,8 +110,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 	],
 	exports: [],
 	providers: [
-		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor,multi:true },
-		
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,
@@ -143,6 +144,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService,
+		TwilioService
 	],
 	bootstrap: [AppComponent]
 })
