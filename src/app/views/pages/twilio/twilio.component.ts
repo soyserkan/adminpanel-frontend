@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TwilioService } from './twilio.service';
-// import * as Video from 'twilio-video';;
 
 @Component({
   selector: 'kt-twilio',
