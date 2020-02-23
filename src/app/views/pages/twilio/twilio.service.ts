@@ -45,23 +45,17 @@ export class TwilioService {
                 this.detachParticipantTracks(participant);
             });
 
-            room.on('participantConnected', (participant) => {
-                console.log('Remote Participant connected: ', participant);
-                participant.tracks.forEach(function (publication) {
-
-                    const track = publication.track;
-                    console.log(publication);
-                    console.log(track);
-                    console.log(track.attach());
-                    this.remoteVideo.nativeElement.appendChild(track.attach());
-
+            room.on('participantConnected',  (participant) => {
+                participant.tracks.forEach(track => {
+                  this.remoteVideo.nativeElement.appendChild(track.attach());
                 });
+        
                 // participant.on('trackAdded', track => {
                 //   console.log('track added')
                 //   this.remoteVideo.nativeElement.appendChild(track.attach());
                 //   // document.getElementById('remote-media-div').appendChild(track.attach());
                 // });
-            });
+              });
 
             // When a Participant adds a Track, attach it to the DOM.
             room.on('trackAdded', (track, participant) => {
