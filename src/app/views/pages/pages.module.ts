@@ -9,6 +9,7 @@ import { PartialsModule } from '../partials/partials.module';
 import { CoreModule } from '../../core/core.module';
 import { MailModule } from './apps/mail/mail.module';
 import { TwilioComponent } from './twilio/twilio.component';
+import { MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
 	declarations: [TwilioComponent],
@@ -20,6 +21,10 @@ import { TwilioComponent } from './twilio/twilio.component';
 		CoreModule,
 		PartialsModule,
 		MailModule,
+		MatGridListModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatButtonModule
 	],
 	providers: []
 })

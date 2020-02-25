@@ -49,7 +49,10 @@ export class TwilioComponent implements OnInit {
     if (!this.roomName || !this.username) { this.message = "enter username and room name."; return; }
     if (storage['twilio-token'] && storage['created_at'] + 3600000 > date) {
       this.accessToken = storage['twilio-token'];
-      this.twilioService.connectToRoom(this.accessToken, { name: this.roomName, audio: true, video: { width: 240 } })
+      this.twilioService.connectToRoom(this.accessToken, {
+        name: this.roomName, audio: true,
+        video: { width: 240 }
+      })
       return;
     }
     this.twilioService.getToken(this.username).subscribe(d => {

@@ -19,7 +19,7 @@ export class TwilioService {
     constructor(private http: HttpClient) { }
 
     getToken(username): Observable<any> {
-        return this.http.post(BACKEND_URL + '/token?', { uid: username });
+        return this.http.post(BACKEND_URL + '/token', { username });
     }
 
     connectToRoom(accessToken: string, options): void {
@@ -45,17 +45,17 @@ export class TwilioService {
                 this.detachParticipantTracks(participant);
             });
 
-            room.on('participantConnected',  (participant) => {
+            room.on('participantConnected', (participant) => {
                 participant.tracks.forEach(track => {
-                  this.remoteVideo.nativeElement.appendChild(track.attach());
+                    this.remoteVideo.nativeElement.appendChild(track.attach());
                 });
-        
+
                 // participant.on('trackAdded', track => {
                 //   console.log('track added')
                 //   this.remoteVideo.nativeElement.appendChild(track.attach());
                 //   // document.getElementById('remote-media-div').appendChild(track.attach());
                 // });
-              });
+            });
 
             // When a Participant adds a Track, attach it to the DOM.
             room.on('trackAdded', (track, participant) => {

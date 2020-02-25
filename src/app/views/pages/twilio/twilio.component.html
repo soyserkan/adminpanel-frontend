@@ -1,22 +1,56 @@
-<p>
-    {{ message }}
-  </p>
-  
-  <div id="video-container">
-  
-    <div id="local" #localVideo>
-      <p>local video</p>
-    </div>
-  
-    <div id="remote" #remoteVideo>
-      <p>remote video</p>
-    </div>
-    <input type="text" [(ngModel)]="username" placeholder="username">
-  
-    <input type="text" [(ngModel)]="roomName" placeholder="room name">
-  
-    <input type="button" [disabled]="!username || !roomName ? true : false" value="connect" (click)="connect()">
-  
-    <input type="button"  value="disconnect" (click)="disconnect()">
-  
-  </div>
+<h1 style="color:#1a1a27;">Yayındaki Katılımcılar</h1>
+<div id="remote-media" #remoteVideo></div>
+
+<div id="controls">
+	<mat-grid-list cols="2" rowHeight="2:1">
+		<mat-grid-tile>
+			<div id="preview">
+				<p class="instructions">Hello</p>
+				<div id="local-media" #localVideo></div>
+			</div>
+			<div id="log">
+				{{ message }}
+			</div>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<mat-form-field>
+				<input
+					matInput
+					type="text"
+					[(ngModel)]="roomName"
+					placeholder="Oda Adı"
+					id="room-name"
+				/>
+			</mat-form-field>
+			<mat-form-field>
+				<input
+					matInput
+					type="text"
+					[(ngModel)]="username"
+					placeholder="Adınız"
+				/>
+			</mat-form-field>
+			<div class="button-row">
+				<button
+					mat-raised-button
+					color="accent"
+					type="button"
+					[disabled]="!username || !roomName ? true : false"
+					(click)="connect()"
+				>
+					Bağlan
+				</button>
+
+				<button
+					mat-raised-button
+					color="warn"
+					type="button"
+					(click)="disconnect()"
+				>
+					Ayrıl
+				</button>
+			</div>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>
