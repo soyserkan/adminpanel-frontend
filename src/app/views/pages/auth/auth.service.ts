@@ -51,6 +51,7 @@ export class AuthService {
                 this.authNoticeService.setNotice('Üye olma işleminiz başarıyla gerçekleşti. Lütfen giriş yapınız', 'success');
                 this.router.navigateByUrl('/auth/login');
             }, error => {
+                console.log(error)
                 this.authStatusListener.next(false);
                 this.authNoticeService.setNotice('Bu kullancı adı veya email adresiyle data önceden üye olunmuş!', 'danger');
             })
