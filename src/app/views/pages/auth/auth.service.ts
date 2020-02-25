@@ -51,9 +51,13 @@ export class AuthService {
                 this.authNoticeService.setNotice('Üye olma işleminiz başarıyla gerçekleşti. Lütfen giriş yapınız', 'success');
                 this.router.navigateByUrl('/auth/login');
             }, error => {
-                console.log(error)
                 this.authStatusListener.next(false);
-                this.authNoticeService.setNotice('Bu kullancı adı veya email adresiyle data önceden üye olunmuş!', 'danger');
+                console.log(error)
+                if (error.status == 401) {
+                    this.authNoticeService.setNotice('Bu kullancı adı veya email adresiyle data önceden üye olunmuş!', 'danger');
+                } else {
+                    this.authNoticeService.setNotice('Üye olurken bir hata oluştu!', 'danger');
+                }
             })
     }
 
