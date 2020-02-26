@@ -6,6 +6,7 @@ import { BaseComponent } from './views/theme/base/base.component';
 import { ErrorPageComponent } from './views/theme/content/error-page/error-page.component';
 import { AuthGuard } from './views/pages/auth/auth.guard';
 import { TwilioComponent } from './views/pages/twilio/twilio.component';
+import { UserprofileComponent } from './views/pages/userprofile/userprofile.component';
 // Auth
 // import {AuthGuard} from './core/auth';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
 			{
 				path: 'twilio',
 				component: TwilioComponent
+			},
+			{
+				path: 'userprofile',
+				component: UserprofileComponent
 			},
 			{
 				path: 'mail',

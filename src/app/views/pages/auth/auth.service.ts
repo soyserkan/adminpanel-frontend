@@ -54,7 +54,7 @@ export class AuthService {
                 this.authStatusListener.next(false);
                 console.log(error)
                 if (error.status == 401) {
-                    this.authNoticeService.setNotice('Bu kullancı adı veya email adresiyle data önceden üye olunmuş!', 'danger');
+                    this.authNoticeService.setNotice('Bu kullancı adı veya email adresiyle daha önceden üye olunmuş!', 'danger');
                 } else {
                     this.authNoticeService.setNotice('Üye olurken bir hata oluştu!', 'danger');
                 }

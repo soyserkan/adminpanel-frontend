@@ -1,0 +1,127 @@
+<div class="kt-portlet">
+	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-caption">
+			<div class="kt-portlet__head-title">
+				<span class="kt-portlet__head-icon kt-hide">
+					<i class="la la-gear"></i>
+				</span>
+				<h3 class="kt-portlet__head-text">
+					Kullanıcı Profili
+				</h3>
+			</div>
+		</div>
+	</div>
+	<!--begin::Form-->
+	<form
+		class="kt-form kt-form--label-align-right kt-form--group-seperator-dashed"
+		(submit)="onSaveProfile()"
+		[formGroup]="form"
+		
+	>
+		<mat-card>
+			<div class="kt-portlet__body">
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-2 col-form-label">Ad Soyad:</label>
+
+					<div class="col-lg-5">
+						<mat-form-field class="example-full-width">
+							<input
+								matInput
+								placeholder="Ad Soyad"
+								type="text"
+								formControlName="fullname"
+							/>
+							<mat-hint align="start"
+								>Lütfen adınızı ve soyadınızı giriniz</mat-hint
+							>
+							<mat-error *ngIf="form.get('fullname').invalid">please</mat-error> 
+						</mat-form-field>
+					</div>
+					<div class="col-lg-1" class="imageArea">
+						<div
+							mat-card-avatar
+							class="example-header-image"
+							(click)="filePicker.click()"
+						>
+							<input type="file" #filePicker />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-2 col-form-label">Email adresi:</label>
+					<div class="col-lg-6">
+						<mat-form-field class="example-full-width">
+							<input
+								matInput
+								placeholder="Email adresi"
+								type="email"
+								formControlName="email"
+							/>
+							<mat-hint align="start"
+								>Email adresiniz yalnızca size gözükür</mat-hint
+							>
+							<mat-error *ngIf="form.get('email').invalid">please</mat-error> 
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-2 col-form-label">Doğum Tarihi:</label>
+					<div class="col-lg-6">
+						<mat-form-field class="example-full-width">
+							<input
+								matInput
+								[matDatepicker]="picker"
+								placeholder="Tarih Seç"
+								formControlName="date_of_birth"
+							/>
+							<mat-datepicker-toggle
+								matSuffix
+								[for]="picker"
+							></mat-datepicker-toggle>
+							<mat-datepicker #picker></mat-datepicker>
+							<mat-error *ngIf="form.get('date_of_birth').invalid">please</mat-error> 
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-2 col-form-label"
+						>Telefon Numarası:</label
+					>
+					<div class="col-lg-6">
+						<div class="kt-input-icon kt-input-icon--left">
+							<mat-form-field class="example-full-width">
+								<mat-icon matPrefix>local_phone</mat-icon>
+								<input
+									type="tel"
+									matInput
+									placeholder="Telefon numarası"
+									formControlName="phone"
+								/>
+								<mat-hint align="start"
+									>Telefon numaranız yalnızca size
+									gözükür</mat-hint
+								>
+								<mat-error *ngIf="form.get('phone').invalid">please</mat-error> 
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+			</div>
+		</mat-card>
+		<div class="kt-portlet__foot kt-portlet__no-border">
+			<div class="kt-form__actions kt-form__actions--solid">
+				<div class="row">
+					<div class="col-lg-2"></div>
+					<div class="col-lg-6">
+						<button mat-raised-button color="primary" type="submit">
+							Onayla</button
+						>&nbsp;
+						<button mat-raised-button type="reset">Vazgeç</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!--end::Form-->
+</div>

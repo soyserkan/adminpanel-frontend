@@ -3,5 +3,7 @@ export interface AuthData {
     password: string,
     email: string,
     fullname?: string,
-    pic?: string
+    pic?: string,
+    date_of_birth?: string,
+    phone?: string
 }

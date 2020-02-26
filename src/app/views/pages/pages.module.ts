@@ -1,7 +1,7 @@
 // Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // Partials
 import { PartialsModule } from '../partials/partials.module';
@@ -9,10 +9,11 @@ import { PartialsModule } from '../partials/partials.module';
 import { CoreModule } from '../../core/core.module';
 import { MailModule } from './apps/mail/mail.module';
 import { TwilioComponent } from './twilio/twilio.component';
-import { MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatIconModule, MatCheckboxModule, MatRadioModule, MatCardModule, MatToolbarModule } from '@angular/material';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 @NgModule({
-	declarations: [TwilioComponent],
+	declarations: [TwilioComponent, UserprofileComponent],
 	exports: [],
 	imports: [
 		CommonModule,
@@ -24,7 +25,17 @@ import { MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule 
 		MatGridListModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatButtonModule
+		MatButtonModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatDatepickerModule,
+		MatSelectModule,
+		MatIconModule,
+		MatCheckboxModule,
+		MatRadioModule,
+		ReactiveFormsModule,
+		MatCardModule,
+		MatToolbarModule
 	],
 	providers: []
 })

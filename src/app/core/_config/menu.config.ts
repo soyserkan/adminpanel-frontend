@@ -391,9 +391,15 @@ export class MenuConfig {
 				{
 					title: 'Twilio',
 					root: true,
-					icon: 'flaticon2-expand',
+					icon: 'flaticon2-photo-camera',
 					page: '/twilio'
-				 },
+				},
+				{
+					title: 'Kullanıcı Profili',
+					root: true,
+					icon: 'flaticon2-user',
+					page: '/userprofile'
+				},
 				// {
 				// 	title: 'Layout Builder',
 				// 	root: true,
