@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthNoticeService } from './auth-notice/auth-notice.service';
 import { environment } from '../../../../environments/environment';
+import { PageNoticeService } from '../page-notices/page-notices.service';
 
 const BACKEND_URL = environment.API + "/user";
 
@@ -24,6 +25,7 @@ export class AuthService {
         private http: HttpClient,
         private router: Router,
         private authNoticeService: AuthNoticeService,
+        private pageNoticeService: PageNoticeService,
     ) { }
 
 
@@ -61,6 +63,44 @@ export class AuthService {
             })
     }
 
+    updateUserProfile(id: string, user: AuthData, image: File | string) {
+        let userData: AuthData | FormData;
+        if (typeof (image) === 'object') {
+            userData = new FormData();
+            userData.append("fullname", user.fullname);
+            userData.append("email", user.email);
+            userData.append("date_of_birth", user.date_of_birth);
+            userData.append("phone", user.phone);
+            userData.append("username", user.username);
+            userData.append("pic", image, user.fullname);
+            userData.append("id", user.id);
+            userData.append("password", user.password);
+        } else {
+            userData = {
+                id: id,
+                username: user.username,
+                password: user.password,
+                email: user.email,
+                fullname: user.fullname,
+                pic: image,
+                date_of_birth: user.date_of_birth,
+                phone: user.phone
+            }
+        }
+        this.http
+            .put<{ data: AuthData }>(BACKEND_URL + '/' + id, userData)
+            .subscribe(res => {
+                this.pageNoticeService.setNotice('Üyelik bilgileriniz başarıyla değiştirildi!', 'primary');
+            }, error => {
+                if (error.status == 401) {
+                    this.pageNoticeService.setNotice('Bilgileri değiştirmeye yetkiniz bulunmuyor!', 'warn');
+                } else {
+                    this.pageNoticeService.setNotice('Bilgilerinizi değiştirirken bir hata oluştu!', 'warn');
+                }
+            });
+
+    }
+
     getUserByToken() {
         const userToken = this.getToken();
         const httpHeaders = new HttpHeaders();
@@ -82,7 +122,6 @@ export class AuthService {
                     this.authStatusListener.next(true);
                     const now = new Date();
                     const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-                    //console.log(expirationDate);
                     this.saveAuthData(token, expirationDate, this.userId);
                     this.router.navigate(['./dashboard']);
                 }

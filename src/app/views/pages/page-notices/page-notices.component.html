@@ -1,0 +1,3 @@
+<kt-alert [hidden]="!message" type={{type}} [showCloseButton]="true" [duration]="10000" (close)="onAlertClose($event)">
+	<div class="alert-text" [innerHTML]="message"></div>
+</kt-alert>

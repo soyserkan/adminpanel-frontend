@@ -1,3 +1,5 @@
+<kt-page-notices *ngIf="isShow"></kt-page-notices>
+
 <div class="kt-portlet">
 	<div class="kt-portlet__head">
 		<div class="kt-portlet__head-caption">
@@ -16,7 +18,6 @@
 		class="kt-form kt-form--label-align-right kt-form--group-seperator-dashed"
 		(submit)="onSaveProfile()"
 		[formGroup]="form"
-		
 	>
 		<mat-card>
 			<div class="kt-portlet__body">
@@ -34,17 +35,23 @@
 							<mat-hint align="start"
 								>Lütfen adınızı ve soyadınızı giriniz</mat-hint
 							>
-							<mat-error *ngIf="form.get('fullname').invalid">please</mat-error> 
+							<mat-error *ngIf="form.get('fullname').invalid"
+								>Lütfen geçerli bir isim giriniz</mat-error
+							>
 						</mat-form-field>
 					</div>
 					<div class="col-lg-1" class="imageArea">
-						<div
+						<img
 							mat-card-avatar
+							[src]="imagePreview"
 							class="example-header-image"
 							(click)="filePicker.click()"
-						>
-							<input type="file" #filePicker />
-						</div>
+						/>
+						<input
+							type="file"
+							#filePicker
+							(change)="onImagePicked($event)"
+						/>
 					</div>
 				</div>
 
@@ -61,7 +68,10 @@
 							<mat-hint align="start"
 								>Email adresiniz yalnızca size gözükür</mat-hint
 							>
-							<mat-error *ngIf="form.get('email').invalid">please</mat-error> 
+							<mat-error *ngIf="form.get('email').invalid"
+								>Lütfen geçerli bir mail adresi
+								giriniz</mat-error
+							>
 						</mat-form-field>
 					</div>
 				</div>
@@ -80,7 +90,10 @@
 								[for]="picker"
 							></mat-datepicker-toggle>
 							<mat-datepicker #picker></mat-datepicker>
-							<mat-error *ngIf="form.get('date_of_birth').invalid">please</mat-error> 
+							<mat-error *ngIf="form.get('date_of_birth').invalid"
+								>litfen geçerli bir doğum tarihi
+								giriniz</mat-error
+							>
 						</mat-form-field>
 					</div>
 				</div>
@@ -102,7 +115,10 @@
 									>Telefon numaranız yalnızca size
 									gözükür</mat-hint
 								>
-								<mat-error *ngIf="form.get('phone').invalid">please</mat-error> 
+								<mat-error *ngIf="form.get('phone').invalid"
+									>lütfen geçerli bir telefon numarası
+									giriniz</mat-error
+								>
 							</mat-form-field>
 						</div>
 					</div>

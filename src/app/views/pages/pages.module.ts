@@ -11,9 +11,10 @@ import { MailModule } from './apps/mail/mail.module';
 import { TwilioComponent } from './twilio/twilio.component';
 import { MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatIconModule, MatCheckboxModule, MatRadioModule, MatCardModule, MatToolbarModule } from '@angular/material';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { PageNoticesComponent } from './page-notices/page-notices.component';
 
 @NgModule({
-	declarations: [TwilioComponent, UserprofileComponent],
+	declarations: [TwilioComponent, UserprofileComponent, PageNoticesComponent],
 	exports: [],
 	imports: [
 		CommonModule,
