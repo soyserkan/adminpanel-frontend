@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthData } from '../auth/auth.model';
 import { AuthService } from '../auth/auth.service';
 import { mimeType } from './mime-type.validator';
+import { PageNoticeService } from '../page-notices/page-notices.service';
 @Component({
   selector: 'kt-userprofile',
   templateUrl: './userprofile.component.html',
@@ -15,7 +16,10 @@ export class UserprofileComponent implements OnInit, OnDestroy {
   isShow = false
   imagePreview: string
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private pageNoticeService: PageNoticeService
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -34,16 +38,24 @@ export class UserprofileComponent implements OnInit, OnDestroy {
       image: new FormControl(null, { validators: [Validators.required], asyncValidators: [mimeType] })
     });
     this.authService.getUserByToken().subscribe((data: AuthData) => {
-      this.user = data;
+      this.user = {
+        fullname:data.fullname,
+        email:data.email,
+        date_of_birth:data.date_of_birth,
+        phone:data.phone,
+        pic:data.pic,
+        password:data.password,
+      }
       this.form.setValue({
         fullname: this.user.fullname,
         email: this.user.email,
         date_of_birth: this.user.date_of_birth,
         phone: this.user.phone,
-        image:this.user.pic
+        image: this.user.pic
       })
-      this.imagePreview=this.user.pic;
+      this.imagePreview = this.user.pic;
     })
+
   }
 
   onImagePicked(event: Event) {
@@ -53,7 +65,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result as string;
-    };
+    }
     reader.readAsDataURL(file);
   }
 
@@ -69,7 +81,15 @@ export class UserprofileComponent implements OnInit, OnDestroy {
       this.user.id,
       this.form.value,
       this.form.value.image
-    );
+    ).subscribe(res => {
+      this.pageNoticeService.setNotice('Üyelik bilgileriniz başarıyla değiştirildi!', 'primary');
+    }, error => {
+      if (error.status == 401) {
+        this.pageNoticeService.setNotice('Bilgileri değiştirmeye yetkiniz bulunmuyor!', 'warn');
+      } else {
+        this.pageNoticeService.setNotice('Bilgilerinizi değiştirirken bir hata oluştu!', 'warn');
+      }
+    });;
   }
 
   ngOnDestroy() {

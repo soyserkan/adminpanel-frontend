@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 	constructor(private authService: AuthService) { }
 
-	ngOnInit(): void {
+	ngOnInit() {
 		this.authService.getUserByToken().subscribe((data: AuthData) => {
 			this.userData = data;
 		})
@@ -35,8 +35,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 				this.userIsAuthenticated = isAuthenticated;
 				this.userId = this.authService.getUserId();
 			})
-
-
 	}
 
 	ngOnDestroy() {

@@ -7,13 +7,18 @@
 }
 
 .example-header-image {
-	
 	background-size: cover;
-}
-.imageArea {
-	cursor: pointer;
 }
 
 input[type="file"] {
 	visibility: hidden;
+}
+
+.image-preview {
+	height: 5rem;
+	margin: 1rem 0;
+}
+
+.image-preview img {
+	height: 100%;
 }

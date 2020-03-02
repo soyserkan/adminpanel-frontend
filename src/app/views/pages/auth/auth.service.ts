@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthData } from './auth.model';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthNoticeService } from './auth-notice/auth-notice.service';
 import { environment } from '../../../../environments/environment';
@@ -63,7 +63,7 @@ export class AuthService {
             })
     }
 
-    updateUserProfile(id: string, user: AuthData, image: File | string) {
+    updateUserProfile(id: string, user: AuthData, image: File | string): Observable<{ data: AuthData }> {
         let userData: AuthData | FormData;
         if (typeof (image) === 'object') {
             userData = new FormData();
@@ -87,21 +87,12 @@ export class AuthService {
                 phone: user.phone
             }
         }
-        this.http
-            .put<{ data: AuthData }>(BACKEND_URL + '/' + id, userData)
-            .subscribe(res => {
-                this.pageNoticeService.setNotice('Üyelik bilgileriniz başarıyla değiştirildi!', 'primary');
-            }, error => {
-                if (error.status == 401) {
-                    this.pageNoticeService.setNotice('Bilgileri değiştirmeye yetkiniz bulunmuyor!', 'warn');
-                } else {
-                    this.pageNoticeService.setNotice('Bilgilerinizi değiştirirken bir hata oluştu!', 'warn');
-                }
-            });
+        return this.http
+            .put<{ data: AuthData }>(BACKEND_URL + '/' + id, userData);
 
     }
 
-    getUserByToken() {
+    getUserByToken(): Observable<AuthData> {
         const userToken = this.getToken();
         const httpHeaders = new HttpHeaders();
         httpHeaders.set('Authorization', 'Bearer ' + userToken);
